@@ -48,4 +48,17 @@ def posiciona_frota(frota):
                 column = coord[1]
                 grid[line][column] = 1
     return grid
-        
+
+def afundados(frota, tabuleiro):
+    sinked = 0 
+    for todos_barcos in frota.values():
+        for barcos in todos_barcos:
+            x = 0
+            for coord in barcos:
+                line = coord[0]
+                column = coord[1]
+                if tabuleiro[line][column] == "X":
+                    x += 1
+            if x == len(barcos):
+                sinked += 1 
+    return sinked 
