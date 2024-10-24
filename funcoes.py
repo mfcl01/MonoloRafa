@@ -1,0 +1,17 @@
+def define_posicoes(linha, coluna, orientacao, tamanho):
+    t = 1
+
+    coord_inicial = [linha, coluna]
+    lista_resultado = [coord_inicial]
+
+    if orientacao == "vertical":
+        while t < tamanho:
+            lista_resultado.append([linha + t, coluna])
+            t += 1
+
+    elif orientacao == "horizontal":
+        while t < tamanho:
+            lista_resultado.append([linha, coluna + t])
+            t += 1
+    
+    return lista_resultado
