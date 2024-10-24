@@ -25,3 +25,10 @@ def preenche_frota (frota, nome_do_navio, linha, coluna, orientacao, tamanho ):
 
 
     return frota
+
+def faz_jogada(tabuleiro, linha, coluna):
+    if tabuleiro[linha][coluna] == 1:
+        tabuleiro[linha][coluna] = "X"
+    if tabuleiro[linha][coluna] == 0:
+        tabuleiro[linha][coluna] = "-"
+    return tabuleiro
