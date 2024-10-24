@@ -15,3 +15,13 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
             t += 1
     
     return lista_resultado
+
+def preenche_frota (frota, nome_do_navio, linha, coluna, orientacao, tamanho ):
+
+    define_posicoes
+    if nome_do_navio not in frota.keys():
+        frota[nome_do_navio] = []
+    frota[nome_do_navio].append(define_posicoes(linha, coluna, orientacao, tamanho))
+
+
+    return frota
