@@ -32,3 +32,33 @@ def faz_jogada(tabuleiro, linha, coluna):
     if tabuleiro[linha][coluna] == 0:
         tabuleiro[linha][coluna] = "-"
     return tabuleiro
+
+def posiciona_frota(frota):
+    grid = []
+    v = 0
+    while v < 10:
+        add = [0] * 10 
+        grid.append(add)
+        v += 1
+    
+    for todos_barcos in frota.values():
+        for barcos in todos_barcos:
+            for coord in barcos:
+                line = coord[0]
+                column = coord[1]
+                grid[line][column] = 1
+    return grid
+
+def afundados(frota, tabuleiro):
+    sinked = 0 
+    for todos_barcos in frota.values():
+        for barcos in todos_barcos:
+            x = 0
+            for coord in barcos:
+                line = coord[0]
+                column = coord[1]
+                if tabuleiro[line][column] == "X":
+                    x += 1
+            if x == len(barcos):
+                sinked += 1 
+    return sinked 
