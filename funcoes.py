@@ -64,10 +64,16 @@ def afundados(frota, tabuleiro):
     return sinked 
 
 def posicao_valida(dic_navios, linha, coluna, orientacao, tamanho):
-    nova_posicao = define_posicoes(linha,coluna,orientacao, tamanho)
-    for navio in dic_navios:
-        posicoes = dic_navios[navio]
-        for posicao in posicoes:
-            if posicao in nova_posicao:
-                return False
-    return True
+
+    if orientacao == "horizontal" and coluna + tamanho > 10:
+        return False
+    if orientacao == "vertical" and linha + tamanho > 10:
+        return False
+    
+    nova_posicao = define_posicoes(linha, coluna, orientacao, tamanho)
+    for navios in dic_navios.values():
+        for posicoes in navios:
+            for posicao in posicoes:
+                if posicao in nova_posicao:
+                    return False
+    return True     
