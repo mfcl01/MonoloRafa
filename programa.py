@@ -1,4 +1,5 @@
 import funcoes
+import random
 frota_inicial = [ 
     {'nome': 'porta-aviões','tamanho': 4, 'quantidade': 1 },
     {'nome': 'navio-tanque','tamanho': 3, 'quantidade': 2 },
@@ -56,6 +57,7 @@ tabuleiro_oponente = funcoes.posiciona_frota(frota_oponente)
 tabuleiro_jogador = funcoes.posiciona_frota(frota)
 jogando = True
 já_atacados = []
+já_atacados_op = []
         
 while jogando == True:
     tabuleiros = funcoes.monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente)
@@ -82,7 +84,21 @@ while jogando == True:
     if total_afundados == 10:
         print('Parabéns! Você derrubou todos os navios do seu oponente!')
         jogando = False
-        
+    else:
+        i = 0
+        while i == 0:
+            linha_oponente = random.randint(0,9)
+            coluna_oponente = random.randint(0,9)
+            if [linha_oponente, coluna_oponente] not in já_atacados_op:
+                já_atacados_op.append([linha_oponente, coluna_oponente])
+                i = 1
+        print(f'Seu oponente está atacando na linha {linha_oponente} e coluna {coluna_oponente}')
+        tabuleiro_jogador = funcoes.faz_jogada(tabuleiro_jogador, linha_oponente, coluna_oponente)
+        afundados_jogador = funcoes.afundados(frota, tabuleiro_jogador)
+        if afundados_jogador == 10:
+            print('Xi! O oponente derrubou toda a sua frota =(')
+            jogando=False
+
 
 
 
